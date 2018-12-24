@@ -15,6 +15,9 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 
 	</settings>
+	<typeAliases>
+		<package name="com.chenjin.entity"/>
+	</typeAliases>
 	<mappers>
 		<package name="com.chenjin.dao" />
 	</mappers>
