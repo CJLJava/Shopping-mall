@@ -24,4 +24,8 @@ public class UserServiceTest {
 		user.setPhone("11111");
 		userService.register(user);
 	}
+	@Test
+	public void selectByPhone() {
+		System.out.println(userService.selectUserByPhone("13980721384"));
+	}
 }

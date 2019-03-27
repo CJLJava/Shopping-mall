@@ -36,7 +36,32 @@
 			<mvc:mapping path="/**" />
 			<bean class="com.chenjin.interceptor.AutoLoginInterceptor"></bean>
 		</mvc:interceptor>
-		<!-- <mvc:interceptor> <mvc:mapping path="/"/> <bean class="com.chenjin.interceptor.ValidateLoginInterceptor"></bean> 
-			</mvc:interceptor> -->
+		<mvc:interceptor>
+			<mvc:mapping path="/skipToJSP/classify.do" />
+			<mvc:mapping path="/skipToJSP/product.do" />
+			<bean class="com.chenjin.interceptor.ToClassifyInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/skipToJSP/index.do" />
+			<bean class="com.chenjin.interceptor.ToIndexInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/skipToJSP/product.do" />
+			<bean class="com.chenjin.interceptor.ToProductInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/orderForm/newOrderForm.do" />
+			<mvc:mapping path="/skipToJSP/cart.do" />
+			<mvc:mapping path="/skipToJSP/shoppingHistory.do" />
+			<bean class="com.chenjin.interceptor.ValidateLoginInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/skipToJSP/completeOrderformInfo.do" />
+			<bean class="com.chenjin.interceptor.ToCompleteOrderformInfoInterceptor"></bean>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/skipToJSP/orderformList.do" />
+			<bean class="com.chenjin.interceptor.ToOrderformListInterceptor"></bean>
+		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

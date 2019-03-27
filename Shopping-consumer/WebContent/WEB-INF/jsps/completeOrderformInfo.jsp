@@ -51,72 +51,67 @@
 </head>
 
 <body id="home">
-
-	<jsp:include page="WEB-INF/head/head.jsp" />
+	<jsp:include page="/WEB-INF/head/head.jsp" />
 
 	<div class="container">
 
-		<!-- collections -->
-		<div class="content inside-page collection">
-
-
-			<div class="pull-right sortby">
-				<select class="form-control">
-					<option>Order by A to Z</option>
-					<option>Order by Z to A</option>
-					<option>Order by Price</option>
-					<option>Order by Rating</option>
-				</select>
-			</div>
-
-
-
-			<h2 class="title">Collections</h2>
-
+		<!-- checkout -->
+		<div class="content inside-page payment">
+			<h2 class="title">Payment Information</h2>
 			<div class="breadcrumb">
-				<a href="index.jsp">Home</a> / ${requestScope.classify}'s clothing
+				<a href="index.jsp">Home</a> / Payment Information
 			</div>
 
-			<c:forEach items="${clothingByClassify}" var="clothing">
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a
-							href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}&classify=${requestScope.classify}"
-							class="tooltip-destroy" data-toggle="tooltip"
-							data-placement="right" title="commodity details"><img
-							src="${clothing.src}" class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a
-										href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}&classify=${requestScope.classify}">${clothing.name}</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$${clothing.price}</span>
-							</div>
-						</div>
-						<a href="checkout.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> look details</a>
+			<fieldset>
+
+				<div class="form-horizontal  content-center">
+
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-4 control-label"></label>
 					</div>
+
+
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-4 control-label">Name</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="inputEmail3"
+								readonly="readonly" value="${user.userName}"
+								style="text-align: center" />
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-4 control-label">Address</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="inputEmail3"
+								readonly="readonly"
+								value="${user.province}省${user.city}${user.county}${user.detailedAddress}"
+								style="text-align: center" />
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-4 control-label">Remark</label>
+						<div class="col-sm-7">
+							<textarea type="text" class="form-control" rows="5" name="remark" id="remark"></textarea>
+						</div>
+
+					</div>
+
+					<div class="col-sm-8 col-sm-offset-4">
+						<a href="javascript:void(0);" class="btn btn-primary pull-left"
+							id="submit">Complete</a>
+					</div>
+
 				</div>
-			</c:forEach>
 
-
-			<div class="text-center">
-				<ul class="pagination">
-					<li class="disabled"><a href="#">«</a></li>
-					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">»</a></li>
-				</ul>
-			</div>
+			</fieldset>
 
 		</div>
-		<!-- collections -->
 
 	</div>
 	<footer>
@@ -203,6 +198,17 @@
 
 	<!-- custom script -->
 	<script src="assets/script.js"></script>
-
+	<script type="text/javascript">
+		$("#submit").click(function(){
+			console.log("remark="+$("#remark").val());
+			$.ajax({
+				url:"${pageContext.request.contextPath}/orderForm/completeOrderform.do",
+				data:"remark="+$("#remark").val(),
+				success:function(data){
+					location.href="${pageContext.request.contextPath}/skipToJSP/payment.do"
+				}
+			});
+		});
+	</script>
 </body>
 </html>

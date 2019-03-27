@@ -22,5 +22,17 @@ public class UserServiceImpl implements UserService {
 	public void register(User user) {
 		System.out.println("UserServiceImpl/registry");
 		userDAO.insertOne(user);
+		userDAO.insertAddress(user);
+	}
+
+	@Override
+	public String selectPasswordByPhone(String phone) {
+		return userDAO.selectPasswordByPhone(phone);
+	}
+
+	@Override
+	public User selectUserByPhone(String phone) {
+		User user = userDAO.selectByPhone(phone);
+		return user;
 	}
 }

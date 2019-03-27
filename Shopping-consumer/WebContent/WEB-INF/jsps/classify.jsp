@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -50,98 +51,74 @@
 </head>
 
 <body id="home">
-	<jsp:include page="WEB-INF/head/head.jsp" />
+
+	<jsp:include page="/WEB-INF/head/head.jsp" />
 
 	<div class="container">
 
-		<!-- checkout -->
-		<div class="content inside-page payment">
-			<h2 class="title">Payment Information</h2>
-			<div class="breadcrumb">
-				<a href="index.jsp">Home</a> / Payment Information
+		<!-- collections -->
+		<div class="content inside-page collection">
+
+
+			<div class="pull-right sortby">
+				<select class="form-control">
+					<option>Order by A to Z</option>
+					<option>Order by Z to A</option>
+					<option>Order by Price</option>
+					<option>Order by Rating</option>
+				</select>
 			</div>
 
-			<fieldset>
-
-				<div class="form-horizontal  content-center">
 
 
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-4 control-label"></label>
-						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions">Mr
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions">Ms
-							</label>
+			<h2 class="title">Collections</h2>
+
+			<div class="breadcrumb">
+				<a href="index.jsp">Home</a> / ${classify}'s clothing
+			</div>
+
+			<c:forEach items="${clothingByClassify}" var="clothing">
+				<div class="col-sm-2 col-xs-6">
+					<div class="product">
+						<a
+							href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}&classify=${requestScope.classify}"
+							class="tooltip-destroy" data-toggle="tooltip"
+							data-placement="right" title="commodity details"><img
+							src="${clothing.src}" class="img-responsive"></a>
+						<div class="row title-price">
+							<div class="col-md-8">
+								<h5>
+									<a
+										href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}&classify=${requestScope.classify}">${clothing.name}</a>
+								</h5>
+							</div>
+							<div class="col-md-4">
+								<span>$${clothing.price}</span>
+							</div>
 						</div>
-
+						<a
+							href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}&classify=${requestScope.classify}"
+							class="btn btn-default"><i class="fa fa-shopping-cart"></i>
+							look details</a>
 					</div>
-
-
-
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-4 control-label">Name</label>
-						<div class="col-sm-7">
-							<input type="email" class="form-control" id="inputEmail3">
-						</div>
-
-					</div>
-
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-4 control-label">Address</label>
-						<div class="col-sm-7">
-							<select class="form-control">
-								<option>Address 1</option>
-								<option>Address 2</option>
-								<option>Address 3</option>
-								<option>Address 4</option>
-								<option>Address 5</option>
-							</select>
-						</div>
-
-					</div>
-
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-4 control-label">Cash
-							on delivery</label>
-						<div class="col-sm-7">
-							<label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions">Yes
-							</label> <label class="radio-inline"> <input type="radio"
-								name="inlineRadioOptions">No
-							</label>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="inputEmail3" class="col-sm-4 control-label">Remark</label>
-						<div class="col-sm-7">
-							<textarea type="text" class="form-control" rows="5"></textarea>
-						</div>
-
-					</div>
-
-					<div class="col-sm-8 col-sm-offset-4">
-						<a href="login.jsp" class="btn btn-primary pull-left">Complete</a>
-					</div>
-
-
 				</div>
+			</c:forEach>
 
 
-
-			</fieldset>
-
-
+			<div class="text-center">
+				<ul class="pagination">
+					<li class="disabled"><a href="#">«</a></li>
+					<li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</div>
 
 		</div>
-
-
-
-
-
-
+		<!-- collections -->
 
 	</div>
 	<footer>

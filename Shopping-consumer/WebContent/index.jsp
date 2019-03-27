@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -84,7 +85,7 @@
 			<div class="row">
 
 				<div class="col-sm-7">
-					<h3>Hot</h3>
+					<h3>Recommend</h3>
 
 
 					<!-- banner -->
@@ -144,216 +145,33 @@
 				<div class="col-sm-5">
 					<!-- feature-products -->
 					<div class="feature-products">
-						<h3>Featured Products</h3>
+						<h3>Popular Clothing</h3>
 						<div id="owl-products" class="owl-carousel">
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/1.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
+							<c:forEach items="${popularClothes}" var="popularClothing">
+								<div class="product">
+									<a
+										href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${popularClothing.id}"><img
+										src="${popularClothing.src}" class="img-responsive"></a>
+									<div class="row title-price">
+										<div class="col-md-8">
+											<h5>
+												<a
+													href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${popularClothing.id}">${popularClothing.name}</a>
+											</h5>
+										</div>
+										<div class="col-md-4">
+											<span>销量：${popularClothing.quantityOfSale}</span>
+										</div>
+										<div class="col-md-4">
+											<span>$${popularClothing.price}</span>
+										</div>
 									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
+									<a
+										href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${popularClothing.id}"
+										class="btn btn-default"><i class="fa fa-shopping-cart"></i>
+										Look Details</a>
 								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/2.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/3.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/4.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/3.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/1.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/2.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/4.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/1.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/2.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/3.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/4.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
-							<div class="product">
-								<a href="product.jsp"><img src="images/photos/2.jpg"
-									class="img-responsive"></a>
-								<div class="row title-price">
-									<div class="col-md-8">
-										<h5>
-											<a href="product.jsp">Warm Cloths</a>
-										</h5>
-									</div>
-									<div class="col-md-4">
-										<span>$ 200</span>
-									</div>
-								</div>
-								<a href="product.jsp" class="btn btn-default"><i
-									class="fa fa-shopping-cart"></i> Add to Cart</a>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
 					<!-- featured -->
@@ -370,127 +188,36 @@
 	<!-- latest products -->
 	<div class="latest-products">
 		<div class="container">
-			<h3>Latest Products</h3>
+			<h3>Up To date</h3>
 			<div class="row">
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/6.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
+				<c:forEach items="${latestClothes}" var="clothing">
+					<div class="col-sm-2 col-xs-6">
+						<div class="product">
+							<a
+								href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}"><img
+								src="${clothing.src}" class="img-responsive"></a>
+							<div class="row title-price">
+								<div class="col-md-8">
+									<h5>
+										<a
+											href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}">${clothing.name}</a>
+									</h5>
+								</div>
+								<div class="col-md-4">
+									<span>$${clothing.price}</span>
+								</div>
 							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
+							<a
+								href="${pageContext.request.contextPath}/clothing/selectClothingById.do?clothingId=${clothing.id}"
+								class="btn btn-default"><i class="fa fa-shopping-cart"></i>Look
+								Details</a>
 						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
 					</div>
-				</div>
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/5.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
-						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/4.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
-						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/3.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
-						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/2.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
-						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-sm-2 col-xs-6">
-					<div class="product">
-						<a href="product.jsp"><img src="images/photos/1.jpg"
-							class="img-responsive"></a>
-						<div class="row title-price">
-							<div class="col-md-8">
-								<h5>
-									<a href="product.jsp">Warm Cloths</a>
-								</h5>
-							</div>
-							<div class="col-md-4">
-								<span>$ 200</span>
-							</div>
-						</div>
-						<a href="product.jsp" class="btn btn-default"><i
-							class="fa fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-
+				</c:forEach>
 			</div>
 		</div>
 	</div>
 	<!-- latest products -->
-
-
-
-
-
-
 
 
 	<footer>
@@ -499,10 +226,10 @@
 			<div class="col-sm-3 sitemap">
 				<h4>Sitemap</h4>
 				<ul class="list-unstyled">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Return Policy</a></li>
-					<li><a href="#">Terms and Condition</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="javascript:void(0);">Home</a></li>
+					<li><a href="javascript:void(0);">Return Policy</a></li>
+					<li><a href="javascript:void(0);">Terms and Condition</a></li>
+					<li><a href="javascript:void(0);">Contact</a></li>
 				</ul>
 			</div>
 
@@ -531,10 +258,10 @@
 			</div>
 			<div class="col-sm-3">
 				<h4>Like and follow us</h4>
-				<span class="social"><a href="#"><i
-						class="fa fa-facebook"></i></a> <a href="#"><i
-						class="fa fa-twitter"></i> <a href="#"><i
-							class="fa fa-youtube"></i></a> <a href="#"><i
+				<span class="social"><a href="javascript:void(0);"><i
+						class="fa fa-facebook"></i></a> <a href="javascript:void(0);"><i
+						class="fa fa-twitter"></i> <a href="javascript:void(0);"><i
+							class="fa fa-youtube"></i></a> <a href="javascript:void(0);"><i
 							class="fa fa-pinterest"></i></a></span>
 			</div>
 
@@ -553,7 +280,6 @@
 				class="pull-right">The Bootstrap Themes</a>
 
 		</div>
-	</div>
 	</div>
 
 

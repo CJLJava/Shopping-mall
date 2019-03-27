@@ -10,6 +10,7 @@
 %>
 
 <base href="<%=basePath%>">
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -51,80 +52,55 @@
 
 <body id="home">
 
-	<jsp:include page="WEB-INF/head/head.jsp" />
+	<jsp:include page="/WEB-INF/head/head.jsp" />
 
 	<div class="container">
 
 		<!-- checkout -->
-		<div class="content inside-page checkout">
-
-			<h2 class="title">Checkout</h2>
-			<div class="breadcrumb">
-				<a href="index.jsp">Home</a> / Checkout
-			</div>
-
-			<div class="shopping-cart">
-				<!-- fieldsets -->
-
-
-				<div class="row product-list title hidden-xs">
-					<div class="col-xs-8">Product</div>
-					<div class="col-xs-2 center price">Price</div>
-					<div class="col-xs-1">Qty</div>
-					<div class="col-xs-1 center">Action</div>
+		<form action="${pageContext.request.contextPath}/user/login.do?lastPage=${param.lastPage}"
+			method="post">
+			<div class="content inside-page login">
+				<h2 class="title">Login/Register</h2>
+				<div class="breadcrumb">
+					<a href="index.jsp">Home</a> / Checkout
 				</div>
+
+				<div class="row">
+					<div class="col-sm-6">
+						<h3>Sign In</h3>
+						<div class="form-group">
+							<label for="exampleInputEmail1">Phone</label> <input type="text"
+								class="form-control" id="exampleInputEmail1"
+								placeholder="Enter Phone" name="phone">
+						</div>
+						<div class="form-group">
+							<label for="exampleInputPassword1">Password</label> <input
+								type="password" class="form-control" id="exampleInputPassword1"
+								placeholder="Password" name="password">
+						</div>
+						<div class="checkbox">
+							<label> <input type="checkbox" class="btn btn-primary"
+								name="autoLogin" value="autoLogin"> Remember password
+							</label>
+						</div>
+						<input type="submit" class="btn btn-primary" value="Submit" />
+					</div>
+					<div class="col-sm-6">
+						<h3>Create an Account</h3>
+						<p>I would like to create a new account. Lorem ipsum dolor sit
+							amet, consectetur adipiscing elit. Fusce dolor tellus, tempor ut
+							ultrices ferme ntum, aliquam consequat metus.</p>
+						<a href="register.jsp" class="btn btn-primary">Create an
+							Account</a>
+
+					</div>
+				</div>
+
 				<hr>
-				<div class="row product-list">
-					<div class="col-xs-3 col-sm-2">
-						<a href="product.jsp"><img src="images/photos/1.jpg"
-							class="img-responsive" alt="product"></a>
-					</div>
-					<div class="col-xs-9 col-sm-6 title">
-						<a href="product.jsp">White V-neck Tshirt</a>
-					</div>
-					<div class="col-xs-4 col-sm-2 center price">$1000.00</div>
-					<div class="col-xs-3 col-sm-1">
-						<input class="form-control">
-					</div>
-					<div class="col-xs-2 col-sm-1 center">
-						<a href="#"><i class="fa fa-close"></i></a>
-					</div>
-				</div>
-
-				<div class="row product-list">
-					<div class="col-xs-3 col-sm-2">
-						<a href="product.jsp"><img src="images/photos/2.jpg"
-							class="img-responsive" alt="product"></a>
-					</div>
-					<div class="col-xs-9 col-sm-6 title">
-						<a href="product.jsp">White V-neck Tshirt</a>
-					</div>
-					<div class="col-xs-4 col-sm-2 center price">$1000.00</div>
-					<div class="col-xs-3 col-sm-1">
-						<input class="form-control">
-					</div>
-					<div class="col-xs-2 col-sm-1 center">
-						<a href="#"><i class="fa fa-close"></i></a>
-					</div>
-				</div>
-
-
-
-				<div class="row product-list grandtotal">
-					<div class="col-xs-8">Total</div>
-					<div class="col-xs-2 center price">$3000.00</div>
-				</div>
-
-
+				<a href="cart.jsp" class="btn btn-primary pull-left">Continue
+					Shopping</a> <a href="completePayment.jsp" class="btn btn-primary pull-right">Continue</a>
 			</div>
-			<hr>
-			<a href="classify.jsp" class="btn btn-primary pull-left">Continue
-				Shopping</a> <a href="login.jsp" class="btn btn-primary pull-right">Proceed
-				Checkout</a>
-
-		</div>
-		<!-- form -->
-
+		</form>
 	</div>
 	<footer>
 	<div class="container">
@@ -204,12 +180,14 @@
 	<script src="assets/mobile/touchSwipe.min.js"></script>
 	<script src="assets/respond/respond.js"></script>
 
-
-
-
-
 	<!-- custom script -->
 	<script src="assets/script.js"></script>
-
+	<script type="text/javascript">
+		window.onload=function(){
+			if("${alertMsg}"!=""){
+				alert("${alertMsg}");
+			}
+		}
+	</script>
 </body>
 </html>

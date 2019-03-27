@@ -51,7 +51,7 @@
 
 <body id="home">
 
-	<jsp:include page="WEB-INF/head/head.jsp" />
+	<jsp:include page="/WEB-INF/head/head.jsp" />
 
 	<div class="container">
 

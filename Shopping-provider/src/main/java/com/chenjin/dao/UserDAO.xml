@@ -4,11 +4,26 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.chenjin.dao.UserDAO">
 	<insert id="insertOne">
-		INSERT INTO `shopping`.`user_main_message` (
-		`userName`, `password`,
-		`province`, `city`, `county`,
-		`detailedAddress`, `phone`) VALUES (
-		#{userName}, #{password},
-		#{province}, #{city}, #{county}, #{detailedAddress}, #{phone});
+		insert into user_main_message(userName,password,phone) value(#{userName},#{password},#{phone})
 	</insert>
+	<insert id="insertAddress">
+		insert into address(userPhone,province,city,county,detailedAddress) value(#{phone},#{province},#{city},#{county},#{detailedAddress})
+	</insert>
+	<select id="selectPasswordByPhone" resultType="String">
+		select password
+		from user_main_message where phone=#{phone}
+	</select>
+	<select id="selectByPhone" resultType="User">SELECT
+		`user_main_message`.`userName`
+		, `user_main_message`.`password`
+		, `user_main_message`.`phone`
+		, `address`.`province`
+		, `address`.`city`
+		, `address`.`county`
+		, `address`.`detailedAddress`
+		FROM
+		`shopping`.`address`
+		INNER JOIN `shopping`.`user_main_message`
+		ON (`address`.`userPhone` = `user_main_message`.`phone`) where phone=#{userPhone};
+	</select>
 </mapper>

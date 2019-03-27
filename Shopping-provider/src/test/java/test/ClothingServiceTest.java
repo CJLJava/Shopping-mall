@@ -1,5 +1,9 @@
 package test;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TreeSet;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -27,9 +31,19 @@ public class ClothingServiceTest {
 		clothing.setInventory(40);
 		clothingService.newStock(clothing);
 	}
-	
+
 	@Test
 	public void selectClothingByClassify() {
 		System.out.println(clothingService.selectClothingByClassify("women"));
+	}
+
+	@Test
+	public void selectLatest() {
+		System.out.println(clothingService.selectLatestClothing());
+	}
+	@Test
+	public void updateInventory() {
+		int oldInventory=clothingService.selectInventoryById("b7397c74382e4fa6966e51e090bf7393");
+		clothingService.countInventoryById("b7397c74382e4fa6966e51e090bf7393", oldInventory-10);
 	}
 }

@@ -9,4 +9,10 @@ import com.chenjin.entity.User;
  */
 public interface UserService {
 	void register(User user);
+
+	String selectPasswordByPhone(String phone);
+
+	User selectUserByPhone(String phone);
+
+	boolean isExistUserName(String userName);
 }

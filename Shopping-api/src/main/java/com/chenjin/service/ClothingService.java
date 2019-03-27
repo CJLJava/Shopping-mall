@@ -10,4 +10,13 @@ public interface ClothingService {
 	List<Clothing> selectClothingByClassify(String classify);
 
 	Clothing selectClothingById(String clothingId);
+
+	List<Clothing> selectLatestClothing();
+
+	int selectInventoryById(String clothingId);
+
+	void countInventoryById(String clothingId, int newInventory);
+
+	String searchCommodity(String content);
+
 }
