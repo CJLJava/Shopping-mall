@@ -1,4 +1,5 @@
 # Shopping-mall
+一些改动
 服装商城(ssm+dubbo)
 首先启动Zookeeper注册中心，
 而后由Spring-provider项目通过线程阻塞的方式使bean容器开启、service暴露在不同端口，模拟dubbo结构中服务提供端。
